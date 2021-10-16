@@ -7,17 +7,22 @@
           google.charts.load('current', { 'packages':['table']});
           google.charts.setOnLoadCallback(drawTable);
 
-          // var queryStr = encodeURIComponent('SELECT ')
+          var queryStr = encodeURIComponent('SELECT A, B, C, D, E, F, G, H');
 
          function drawTable() {
-            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1LkZaVzufh6P4N5vdFe4BTyOtB3IBjEhc3m5WkR8zLIY/');
+            var opts = {sendMethod: 'auto'};
+            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1LkZaVzufh6P4N5vdFe4BTyOtB3IBjEhc3m5WkR8zLIY/gviz/tq?gid=0&headers=1&tq=' + queryStr, opts);
             query.send(handleQueryResponse);
         }
 
         function handleQueryResponse(response) {
+          if (response.isError()) {
+            alert(`${'There is an error present in the query: '}${response.getMessage()}${response.getDetailedMessage()}`);
+            return;
+          }
             var data = response.getDataTable();
             var table = new google.visualization.Table(document.getElementById('table-div'));
-            table.draw(data, null);
+            table.draw(data, {showRowNumber: false, width: '100%', height: '100%'});
         }
 
         //   function drawTable() {
