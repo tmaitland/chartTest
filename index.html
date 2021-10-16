@@ -7,7 +7,8 @@
           google.charts.load('current', { 'packages':['table']});
           google.charts.setOnLoadCallback(drawTable);
 
-          var queryStr = encodeURIComponent('SELECT A, B, C, D, E, F, G, H');
+          // var queryStr = encodeURIComponent('SELECT A, B, C, D, E, F, G, H');
+          var queryStr = encodeURIComponent('SELECT *');
 
          function drawTable() {
             var opts = {sendMethod: 'auto'};
