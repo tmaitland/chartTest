@@ -24,7 +24,7 @@
           }
             var data = response.getDataTable();
             var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(data, {allowHtml: true, showRowNumber: false, width: '100%', height: '100%'});
+            table.draw(data, {sort: 'disable', allowHtml: true, showRowNumber: false, width: '100%', height: '100%'});
         }
 
         //   function drawTable() {
